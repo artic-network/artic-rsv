@@ -1,0 +1,15 @@
+name: artic_rsv
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python<=3.10
+  - biopython
+  - pysam
+  - nextflow
+  - bedtools
+  - artic
+  - pip:
+      - git+https://github.com/Desperate-Dan/ampli_clean.git
+

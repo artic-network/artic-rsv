@@ -1,12 +1,5 @@
-// Declare syntax version
-nextflow.enable.dsl=2
-
-// Script parameters
-params.refs = "/home/dmmalone/RSV_analysis/testing_ground/RSV_refs.fasta"
-params.bed = "/home/dmmalone/RSV_analysis/testing_ground/RSVA.primer.bed"
-params.fastqIn = "/home/dmmalone/RSV_analysis/RSVLO_A_Run2/fastq_pass/*/*"
-
 process ampliClean {
+  container "${params.wf.container}@${params.wf.container_sha}"
   input:
     tuple val(key), file(samples)
     path refs
@@ -26,6 +19,7 @@ process ampliClean {
 }
 
 process articMinion {
+  container "${params.wf.container}@${params.wf.container_sha}"
   input:
     path input_reads
     val base
@@ -39,9 +33,9 @@ process articMinion {
 }
 
 workflow {
-  def ref_ch = Channel.value(params.refs)
-  def bed_ch = Channel.value(params.bed)
-  def fastqIn_ch = Channel.fromPath(params.fastqIn, checkIfExists:true) 
+  ref_ch = file(params.refs)
+  bed_ch = file(params.bed)
+  fastqIn_ch = Channel.fromPath(params.fastq, checkIfExists:true)
     | map { file -> 
       def key = file.parent.toString().tokenize('/').last()
       return tuple(key, file)
