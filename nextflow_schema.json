@@ -30,14 +30,17 @@
           "type": "string",
           "title": "Primer bed file",
           "description": ""
+        },
+        "schemes_dir": {
+          "type": "string",
+          "title": "Directory for primer schemes",
+          "description": ""
         }
       },
       "allOf": [
         {
           "required": [
-            "fastq",
-            "bed",
-            "ref"
+            "fastq"
           ]
         }
       ]
