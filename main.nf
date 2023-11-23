@@ -30,9 +30,9 @@ process articMinion {
 }
 
 workflow {
-  ref_ch = file(params.refs)
-  bed_ch = file(params.bed)
-  schemes_dir_ch = file(params.schemes_dir)
+  ref_ch = file("${params.refs}")
+  bed_ch = file("${params.bed}")
+  schemes_dir_ch = file("${params.schemes_dir}")
   fastqIn_ch = Channel.fromPath(params.fastq, checkIfExists:true)
     | map { file -> 
       def key = file.parent.toString().tokenize('/').last()
