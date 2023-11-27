@@ -21,18 +21,20 @@
         },
         "ref": {
           "type": "string",
-          "format": "path",
+          "format": "file",
           "title": "Reference FASTA",
           "description": "",
           "help_text": ""
         },
         "bed": {
           "type": "string",
+          "format": "file",
           "title": "Primer bed file",
           "description": ""
         },
         "schemes_dir": {
           "type": "string",
+          "format": "path",
           "title": "Directory for primer schemes",
           "description": ""
         }
