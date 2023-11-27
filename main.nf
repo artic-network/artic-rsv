@@ -30,9 +30,9 @@ process articMinion {
 }
 
 workflow {
-  ref_ch = file("${projectDir}/resources/RSV_refs.fasta")
-  bed_ch = file("${projectDir}/resources/RSVA/V1/RSVA.primer.bed")
-  schemes_dir_ch = file("${projectDir}/resources")
+  ref_ch = file("${projectDir}/${params.refs}")
+  bed_ch = file("${projectDir}/${params.bed}")
+  schemes_dir_ch = file("${projectDir}/${params.schemes_dir}")
   fastqIn_ch = Channel.fromPath(params.fastq, checkIfExists:true)
     | map { file -> 
       def key = file.parent.toString().tokenize('/').last()
