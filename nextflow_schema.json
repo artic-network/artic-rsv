@@ -23,7 +23,7 @@
           "type": "integer",
           "format": "value",
           "title": "Minimum read length",
-          "descripion": "Filter out reads shorter than this value",
+          "description": "Filter out reads shorter than this value",
           "default": 400,
           "help_text": ""
         },
