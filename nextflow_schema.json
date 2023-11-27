@@ -18,7 +18,24 @@
           "title": "FASTQ",
           "description": "",
           "help_text": ""
+        },
+        "min": {
+          "type": "integer",
+          "format": "value",
+          "title": "Minimum read length",
+          "descripion": "Filter out reads shorter than this value",
+          "default": 400,
+          "help_text": ""
+        },
+        "max": {
+          "type": "integer",
+          "format": "value",
+          "title": "Maximum read length",
+          "description": "Filter out reads longer than this value",
+          "default": 800,
+          "help_text": ""
         }
+
       },
       "allOf": [
         {

@@ -1,9 +1,14 @@
 process ampliClean {
   container "${params.wf.container}@${params.wf.container_sha}"
+
+  publishDir path: "${params.outdir}/${barcode}/ampli_clean", mode: 'copy'
+
   input:
     tuple val(barcode), path(binned_reads)
     path refs
     path bed
+    val min
+    val max
     
     
   output:
@@ -11,13 +16,15 @@ process ampliClean {
 
   script:
     """
-
-    ampli_clean -f ${binned_reads} -r ${refs} -o ${barcode} -b ${bed} -s --fastq
+    ampli_clean -f ${binned_reads} -r ${refs} -o ${barcode} -b ${bed} --min ${min} --max ${max} -s --fastq
     """
 }
 
 process articMinion {
   container "${params.wf.container}@${params.wf.container_sha}"
+
+  publishDir path: "${params.outdir}/${barcode}/artic", mode: 'copy'
+
   input:
     tuple val(barcode), path(input_reads)
     path schemes_dir
@@ -41,11 +48,13 @@ workflow {
   ref_ch = file("${params.refs}")
   bed_ch = file("${params.bed}")
   schemes_dir_ch = file("${params.schemes_dir}")
+  min_ch = Channel.value("${params.min}")
+  max_ch = Channel.value("${params.max}")
 //These lines for fastq dir parsing are taken from rmcolq's workflow https://github.com/rmcolq/pantheon
   run_dir = file("${params.fastq}", type: "dir", checkIfExists:true)
   barcode_input = Channel.fromPath("${run_dir}/*", type: "dir", checkIfExists:true, maxDepth:1).map { [it.baseName, get_fq_files_in_dir(it)]}
 
 //Run the processes
-  ampliClean(barcode_input, ref_ch, bed_ch)
+  ampliClean(barcode_input, ref_ch, bed_ch, min_ch, max_ch)
   articMinion(ampliClean.out, schemes_dir_ch)
 }
