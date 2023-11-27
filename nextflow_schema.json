@@ -18,23 +18,6 @@
           "title": "FASTQ",
           "description": "",
           "help_text": ""
-        },
-        "ref": {
-          "type": "string",
-          "format": "path",
-          "title": "Reference FASTA",
-          "description": "",
-          "help_text": ""
-        },
-        "bed": {
-          "type": "string",
-          "title": "Primer bed file",
-          "description": ""
-        },
-        "schemes_dir": {
-          "type": "string",
-          "title": "Directory for primer schemes",
-          "description": ""
         }
       },
       "allOf": [
