@@ -12,7 +12,7 @@ process ampliClean {
     
     
   output:
-    tuple val("${barcode}"), path("${barcode}.RSVA.fastq.gz")
+    tuple val("${barcode}"), path("${barcode}.*.fastq.gz")
 
   script:
     """
@@ -30,10 +30,12 @@ process articMinion {
     path schemes_dir
 
   output:
-    path "${barcode}.consensus.fasta"
+    path "${barcode}.${vir}.consensus.fasta"
 
+  script:
+    vir = input_reads.name.toString().tokenize('.').get(1)
     """
-    artic minion --medaka --threads 12 --scheme-directory ${schemes_dir} --read-file ${input_reads} --medaka-model r941_min_high_g303 RSVA/V1 ${barcode}
+    artic minion --medaka --threads 12 --scheme-directory ${schemes_dir} --read-file ${input_reads} --medaka-model r941_min_high_g303 ${vir}/V1 ${barcode}.${vir}
     """
 }
 //These lines for fastq dir parsing are taken from rmcolq's workflow https://github.com/rmcolq/pantheon
