@@ -28,6 +28,7 @@ process articMinion {
   input:
     tuple val(barcode), path(input_reads)
     path schemes_dir
+    val (medaka_model)
 
   output:
     path "${barcode}.${vir}.consensus.fasta"
@@ -35,7 +36,7 @@ process articMinion {
   script:
     vir = input_reads.name.toString().tokenize('.').get(1)
     """
-    artic minion --medaka --threads 12 --scheme-directory ${schemes_dir} --read-file ${input_reads} --medaka-model r941_min_high_g303 ${vir}/V1 ${barcode}.${vir}
+    artic minion --medaka --threads ${task.cpus} --scheme-directory ${schemes_dir} --read-file ${input_reads} --medaka-model ${medaka_model} --strict ${vir}/V1 ${barcode}.${vir}
     """
 }
 //These lines for fastq dir parsing are taken from rmcolq's workflow https://github.com/rmcolq/pantheon
@@ -52,11 +53,12 @@ workflow {
   schemes_dir_ch = file("${params.schemes_dir}")
   min_ch = Channel.value("${params.min}")
   max_ch = Channel.value("${params.max}")
+  med_mod_ch = Channel.value("${params.medaka_model}")
 //These lines for fastq dir parsing are taken from rmcolq's workflow https://github.com/rmcolq/pantheon
   run_dir = file("${params.fastq}", type: "dir", checkIfExists:true)
   barcode_input = Channel.fromPath("${run_dir}/*", type: "dir", checkIfExists:true, maxDepth:1).map { [it.baseName, get_fq_files_in_dir(it)]}
 
 //Run the processes
   ampliClean(barcode_input, ref_ch, bed_ch, min_ch, max_ch)
-  articMinion(ampliClean.out, schemes_dir_ch)
+  articMinion(ampliClean.out, schemes_dir_ch, med_mod_ch)
 }
