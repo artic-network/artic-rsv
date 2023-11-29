@@ -63,7 +63,7 @@
       "type": "object",
       "description": "Parameters for saving and naming workflow outputs.",
       "properties": {
-        "outdir": {
+        "out_dir": {
           "type": "string",
           "format": "directory-path",
           "default": "output",

@@ -1,7 +1,7 @@
 process ampliClean {
   container "${params.wf.container}@${params.wf.container_sha}"
 
-  publishDir path: "${params.outdir}/${barcode}/ampli_clean", mode: 'copy'
+  publishDir path: "${params.out_dir}/${barcode}/ampli_clean", mode: 'copy'
 
   input:
     tuple val(barcode), path(binned_reads)
@@ -23,7 +23,7 @@ process ampliClean {
 process articMinion {
   container "${params.wf.container}@${params.wf.container_sha}"
 
-  publishDir path: "${params.outdir}/${barcode}/artic", mode: 'copy'
+  publishDir path: "${params.out_dir}/${barcode}/artic", mode: 'copy'
 
   input:
     tuple val(barcode), path(input_reads)
