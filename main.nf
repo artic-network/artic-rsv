@@ -1,5 +1,5 @@
 process ampliClean {
-  container "${params.wf.container}@${params.wf.container_sha}"
+  container "${params.wf.container}"
 
   publishDir path: "${params.out_dir}/${barcode}/ampli_clean", mode: 'copy'
 
@@ -12,16 +12,18 @@ process ampliClean {
     
     
   output:
-    tuple val("${barcode}"), path("${barcode}.*.fastq.gz")
+    tuple val("${barcode}"), path("${barcode}.*.fastq.gz"), emit: reads, optional: true
+    path "log.txt"
 
   script:
     """
-    ampli_clean -f ${binned_reads} -r ${refs} -o ${barcode} -b ${bed} --min ${min} --max ${max} -s --fastq
+    ampli_clean -f ${binned_reads} -r ${refs} -o ${barcode} -b ${bed} --min ${min} --max ${max} -s --fastq --log
     """
 }
 
 process articMinion {
-  container "${params.wf.container}@${params.wf.container_sha}"
+  container "${params.wf.container}"
+  //container "${params.wf.container}@${params.wf.container_sha}"
 
   publishDir path: "${params.out_dir}/${barcode}/artic", mode: 'copy'
 
@@ -60,5 +62,5 @@ workflow {
 
 //Run the processes
   ampliClean(barcode_input, ref_ch, bed_ch, min_ch, max_ch)
-  articMinion(ampliClean.out, schemes_dir_ch, med_mod_ch)
+  articMinion(ampliClean.out.reads, schemes_dir_ch, med_mod_ch)
 }
