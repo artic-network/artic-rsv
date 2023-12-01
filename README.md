@@ -1,5 +1,5 @@
 # artic-rsv
-artic-rsv is an analysis pipeline for the generation of consensus sequences for samples sequenced using the ARTIC RSV amplicon schemes. This pipeline was developed to enable straightforward RSV genome assembly and, importantly, to allow the ARTIC RSV A and B primer sets to be multiplexed into one reaction. Because of this, the end-to-end workstream can process RSV A and RSV B samples simultaneously. The ARTIC RSV primer sets can be found within the [resources](https://github.com/Desperate-Dan/artic-rsv/tree/main/resources) directory for this repository.
+artic-rsv is an analysis pipeline for the generation of consensus sequences for samples sequenced using the ARTIC RSV amplicon schemes. This pipeline was developed to enable straightforward RSV genome assembly and, importantly, to allow the ARTIC RSV A and B primer sets to be multiplexed into one reaction. Because of this, the end-to-end workstream can process RSV A and RSV B samples simultaneously. The ARTIC RSV primer sets can be found within the [resources](https://github.com/artic-network/artic-rsv/tree/main/resources) directory for this repository.
 
 The pipeline is built using nextflow and can be run within ONT's epi2me platform or as a standalone command line tool outside of epi2me, provided nextflow is installed. 
 
@@ -14,7 +14,7 @@ Broadly the workflow consists of two modules, `ampli_clean` and the `ARTIC field
 
 ### Set up - epi2me
 1.	You can download epi2me, from https://labs.epi2me.io/downloads/ and follow the installation instructions at https://labs.epi2me.io/installation/
-2.	After successful installation of the epi2me platform you can "import" workflows for use. To do this, go to the "Workflows" tab and in the top right hand corner there is be a button labelled "import workflow". Click on this, and paste the URL for this repository in the box (https://github.com/Desperate-Dan/artic-rsv.git) and click install to download this workflow.
+2.	After successful installation of the epi2me platform you can "import" workflows for use. To do this, go to the "Workflows" tab and in the top right hand corner there is be a button labelled "import workflow". Click on this, and paste the URL for this repository in the box (https://github.com/artic-network/artic-rsv.git) and click install to download this workflow.
 
 ### Running - epi2me
 1.	To run the epi2me workflow, select the workflow from "Installed" workflows tab. 
@@ -25,7 +25,7 @@ Please note the first time you run this workflow it will take some time as it ne
 ### Set up - CLI
 Alternatively this pipeline can also be run by cloning this repository:
 
-`git clone https://github.com/Desperate-Dan/RSV_nextflow.git`
+`git clone https://github.com/artic-network/artic-rsv.git`
 
 Then it can be run assuming you have already set up [nextflow](https://www.nextflow.io/). The pipeline can then be passed command line arguments like so:
 
