@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://raw.githubusercontent.com/Desperate-Dan/RSV_nextflow/main/nextflow_schema.json",
-  "title": "Desperate-Dan/RSV_nextflow",
+  "$id": "https://raw.githubusercontent.com/ARTICnetwork/artic-rsv/main/nextflow_schema.json",
+  "title": "ARTICnetwork/artic-rsv",
   "description": "Generate assemblies from RSV sequence data generated using the ARTIC primer scheme.",
-  "url": "https://github.com/Desperate-Dan/RSV_nextflow",
+  "url": "https://github.com/ARTICnetwork/artic-rsv",
   "type": "object",
   "definitions": {
     "input_options": {
@@ -147,7 +147,7 @@
     }
   },
   "docs": {
-    "intro": "\nThis pipeline does stuff on RSV\n\n",
+    "intro": "\nartic-rsv is an analysis pipeline for the generation of consensus sequences for RSV samples sequenced using the ARTIC RSV amplicon schemes\n\n",
     "links": "## Useful links\n\n* [nextflow](https://www.nextflow.io/)\n* [docker](https://www.docker.com/products/docker-desktop)"
   }
 }
