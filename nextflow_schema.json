@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://raw.githubusercontent.com/ARTICnetwork/artic-rsv/main/nextflow_schema.json",
-  "title": "ARTICnetwork/artic-rsv",
+  "$id": "https://raw.githubusercontent.com/artic-network/artic-rsv/main/nextflow_schema.json",
+  "title": "artic-network/artic-rsv",
   "description": "Generate assemblies from RSV sequence data generated using the ARTIC primer scheme.",
-  "url": "https://github.com/ARTICnetwork/artic-rsv",
+  "url": "https://github.com/artic-network/artic-rsv",
   "type": "object",
   "definitions": {
     "input_options": {
