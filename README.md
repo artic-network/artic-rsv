@@ -1,6 +1,8 @@
 # RSV_nextflow
 RSV_nextflow is nextflow pipeline for the generation of consensus sequences for RSV samples sequenced using the ARTIC RSV amplicon scheme on the Nanopore platforms. It is set up to work within Oxford Nanopore Technologies's epi2me platform, but can be run outside of epi2me if you have nextflow available. This workflow was developed to enable RSV genome assembly to be straightforward but also importantly to allow the two ARTIC RSV primer sets for RSV A and B to be multiplexed into one reaction.
 
+***This repo is under active development and we hope to add much more in the way for output reporting for epi2me, as well as adapting this approach to be an RSV primer multiplexing pipeline for Illumina data as well*** 
+
  
 ## Pipeline overview
 Broadly the workflow consists of two separate parts, ampli_clean and the fieldbioinformatics pipeline. Ampli_clean is a standalone tool that allows correct reference selection for a given set of reads (ie RSV A or RSV B in this case) and then can "clean" the resulting bam file to ensure only amplicons for the correct primer set are mapping to the genome. These cleaned reads are then passed to the fieldbioinformatics pipeline for assembly. The use of ampli_clean and the `--strict` flag within fieldbioinformatics should ensure no erroneous SNPs are introduced into the consensus genomes by incomplete primer trimming due to primer binding from the "other" primer set.
