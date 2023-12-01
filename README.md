@@ -14,7 +14,7 @@ Broadly the workflow consists of two modules, `ampli_clean` and the `ARTIC field
 
 ### Set up - epi2me
 1.	You can download epi2me, from https://labs.epi2me.io/downloads/ and follow the installation instructions at https://labs.epi2me.io/installation/
-2.	After successful installation of the epi2me platform you can "import" workflows for use. To do this, go to the "Workflows" tab and in the top right hand corner there is be a button labelled "import workflow". Click on this, and paste the URL for this repository in the box (https://github.com/artic-network/artic-rsv.git) and click install to download this workflow.
+2.	After successful installation of the epi2me platform you can "import" workflows for use. To do this, go to the "Workflows" tab and in the top right hand corner there is be a button labelled "import workflow". Click on this, and paste the URL for this repository in the box (https://github.com/artic-network/artic-rsv) and click install to download this workflow.
 
 ### Running - epi2me
 1.	To run the epi2me workflow, select the workflow from "Installed" workflows tab. 
